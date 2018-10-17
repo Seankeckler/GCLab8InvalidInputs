@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace GCLab8UserRequest
@@ -36,6 +37,36 @@ namespace GCLab8UserRequest
             else if (seeOrAdd == "add")
             {
                 Console.WriteLine("You will need to enter a name, a hometown, and then a favorite food.");
+                Console.WriteLine("Please enter a name");
+                string newName = Console.ReadLine();
+                Console.WriteLine("Please enter a HomeTown");
+                string newTown = Console.ReadLine();
+                Console.WriteLine("Please enter a favorite food");
+                string newFood = Console.ReadLine();
+               bool verified = AddaStudentVerify(newName,newTown,newFood);
+                if (verified == true)
+                {
+                    Names.Add(newName);
+                    HomeTown.Add(newTown);
+                    FaveFood.Add(newFood);
+                    foreach (var Name in Names)
+                    {
+                        Console.WriteLine("\n" + Name);
+                    }
+                    foreach (var Town in HomeTown)
+                    {
+                        Console.WriteLine("\n" + Town);
+                    }
+                    foreach (var Food in FaveFood)
+                    {
+                        Console.WriteLine("\n" + Food);
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("You did not enter name, town, or food correctly");
+                }
+                
             }
             else
             {
@@ -43,6 +74,21 @@ namespace GCLab8UserRequest
             }
             
             Console.ReadKey();
+        }
+
+        public static bool AddaStudentVerify(string name, string town, string food)
+        {
+            Regex n = new Regex("^[a-zA-Z ]+$");
+            if (n.IsMatch(name) && n.IsMatch(town) && n.IsMatch(food))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+            
         }
 
         public static int SeeStudentNumber(List<string> theirnames) 
