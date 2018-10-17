@@ -1,0 +1,7 @@
+C:\Users\seank\source\repos\GCLab8UserRequest\GCLab8UserRequest\bin\Debug\GCLab8UserRequest.exe.config
+C:\Users\seank\source\repos\GCLab8UserRequest\GCLab8UserRequest\bin\Debug\GCLab8UserRequest.exe
+C:\Users\seank\source\repos\GCLab8UserRequest\GCLab8UserRequest\bin\Debug\GCLab8UserRequest.pdb
+C:\Users\seank\source\repos\GCLab8UserRequest\GCLab8UserRequest\obj\Debug\GCLab8UserRequest.csprojAssemblyReference.cache
+C:\Users\seank\source\repos\GCLab8UserRequest\GCLab8UserRequest\obj\Debug\GCLab8UserRequest.csproj.CoreCompileInputs.cache
+C:\Users\seank\source\repos\GCLab8UserRequest\GCLab8UserRequest\obj\Debug\GCLab8UserRequest.exe
+C:\Users\seank\source\repos\GCLab8UserRequest\GCLab8UserRequest\obj\Debug\GCLab8UserRequest.pdb
