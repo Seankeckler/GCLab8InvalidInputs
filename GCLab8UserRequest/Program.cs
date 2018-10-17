@@ -11,69 +11,97 @@ namespace GCLab8UserRequest
     {
         static void Main(string[] args)
         {
-            
-            string[] names = { "Katie" , "Andrew", "Chuck", "Jon", "Tommy", "Jeremy" , "Joseph" , "Kelsey" , "Justin", "Sean" };
-            string[] homeTown = { "Grand Rapids","Grand Haven", "Ripon", "Alger", "Raleigh,NC", "Milwaukee", "Grand Rapids", "Grand Rapids", "Wyoming", "Grand Rapids"};
-            string[] faveFood = {"Indian Cuisine", "Chicken Wings", "Almonds", "Tres Leche", "Buttered Chicken", "Peanut Butter", "Burritos", "Grits", "Burgers", "BBQ" };
-
-            List<string> Names = new List<string>(names);
-            List<string> HomeTown = new List<string>(homeTown);
-            List<string> FaveFood = new List<string>(faveFood);
-
-            Console.WriteLine("Do you want to see information on a student or add a new student?");
-            Console.Write("see or add: ");
-            string seeOrAdd = Console.ReadLine();
-            string SeeOrAdd = seeOrAdd.ToLower();
-            
-            
-            if (SeeOrAdd == "see")
+            bool run = true;
+            while (run == true)
             {
 
-               int index = SeeStudentNumber(Names);
-                HometownOrFavefood(HomeTown, FaveFood, index);
-                
+                string[] names = { "Katie", "Andrew", "Chuck", "Jon", "Tommy", "Jeremy", "Joseph", "Kelsey", "Justin", "Sean" };
+                string[] homeTown = { "Grand Rapids", "Grand Haven", "Ripon", "Alger", "Raleigh,NC", "Milwaukee", "Grand Rapids", "Grand Rapids", "Wyoming", "Grand Rapids" };
+                string[] faveFood = { "Indian Cuisine", "Chicken Wings", "Almonds", "Tres Leche", "Buttered Chicken", "Peanut Butter", "Burritos", "Grits", "Burgers", "BBQ" };
 
-            }
-            else if (seeOrAdd == "add")
-            {
-                Console.WriteLine("You will need to enter a name, a hometown, and then a favorite food.");
-                Console.WriteLine("Please enter a name");
-                string newName = Console.ReadLine();
-                Console.WriteLine("Please enter a HomeTown");
-                string newTown = Console.ReadLine();
-                Console.WriteLine("Please enter a favorite food");
-                string newFood = Console.ReadLine();
-               bool verified = AddaStudentVerify(newName,newTown,newFood);
-                if (verified == true)
+                List<string> Names = new List<string>(names);
+                List<string> HomeTown = new List<string>(homeTown);
+                List<string> FaveFood = new List<string>(faveFood);
+
+                Console.WriteLine("Do you want to see information on a student or add a new student?");
+                Console.Write("see or add: ");
+                string seeOrAdd = Console.ReadLine();
+                string SeeOrAdd = seeOrAdd.ToLower();
+
+
+                if (SeeOrAdd == "see")
                 {
-                    Names.Add(newName);
-                    HomeTown.Add(newTown);
-                    FaveFood.Add(newFood);
-                    foreach (var Name in Names)
+
+                    int index = SeeStudentNumber(Names);
+                    HometownOrFavefood(HomeTown, FaveFood, index);
+
+
+                }
+                else if (seeOrAdd == "add")
+                {
+                    Console.WriteLine("You will need to enter a name, a hometown, and then a favorite food.");
+                    Console.WriteLine("Please enter a name");
+                    string newName = Console.ReadLine();
+                    Console.WriteLine("Please enter a HomeTown");
+                    string newTown = Console.ReadLine();
+                    Console.WriteLine("Please enter a favorite food");
+                    string newFood = Console.ReadLine();
+                    bool verified = AddaStudentVerify(newName, newTown, newFood);
+                    if (verified == true)
                     {
-                        Console.WriteLine("\n" + Name);
+                        Names.Add(newName);
+                        HomeTown.Add(newTown);
+                        FaveFood.Add(newFood);
+                        foreach (var Name in Names)
+                        {
+                            Console.WriteLine("\n" + Name);
+                        }
+                        foreach (var Town in HomeTown)
+                        {
+                            Console.WriteLine("\n" + Town);
+                        }
+                        foreach (var Food in FaveFood)
+                        {
+                            Console.WriteLine("\n" + Food);
+                        }
                     }
-                    foreach (var Town in HomeTown)
+                    else
                     {
-                        Console.WriteLine("\n" + Town);
+                        Console.WriteLine("You did not enter name, town, or food correctly");
                     }
-                    foreach (var Food in FaveFood)
-                    {
-                        Console.WriteLine("\n" + Food);
-                    }
+
                 }
                 else
                 {
-                    Console.WriteLine("You did not enter name, town, or food correctly");
+                    Console.WriteLine("Please enter either see or add");
                 }
+                Continue();
                 
+            }
+        }
+
+        public static bool Continue()
+        {
+            bool run;
+            Console.WriteLine("Do you want to pick another student? y/n");
+            string answer = Console.ReadLine();
+            answer = answer.ToLower();
+
+            if (answer == "y")
+            {
+                run = true;
+            }
+            else if (answer == "n")
+            {
+                run = false;
             }
             else
             {
-                Console.WriteLine("Please enter either see or add");
+                Console.WriteLine("Sorry that is not an acceptable answer.");
+                run = Continue();
             }
-            
-            Console.ReadKey();
+            return run;
+
         }
 
         public static bool AddaStudentVerify(string name, string town, string food)
